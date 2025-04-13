@@ -1,0 +1,64 @@
+### Register a new user
+POST http://localhost:5000/register
+Content-Type: application/json
+
+{
+  "username": "testuser",
+  "email": "test@example.com",
+  "password": "testpassword"
+}
+
+###
+
+### Login user to get JWT token
+POST http://localhost:5000/login
+Content-Type: application/json
+
+{
+  "username": "testuser",
+  "password": "testpassword"
+}
+
+###
+
+### Get all todos (Replace eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE3NDQ1NTc3Mjd9.GlnULGoJc784HY8pcI6fafZryU8m8cmMpeIPxxYVezY below after login)
+GET http://localhost:5000/todos
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE3NDQ1NTc3Mjd9.GlnULGoJc784HY8pcI6fafZryU8m8cmMpeIPxxYVezY
+
+###
+
+### Create a new todo
+POST http://localhost:5000/todos
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE3NDQ1NTc3Mjd9.GlnULGoJc784HY8pcI6fafZryU8m8cmMpeIPxxYVezY
+
+{
+  "title": "Complete Python project",
+  "description": "Work on class-based Flask API",
+  "completed": true
+}
+
+###
+
+### Get a single todo by ID
+GET http://localhost:5000/todos/4
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE3NDQ1NTc3Mjd9.GlnULGoJc784HY8pcI6fafZryU8m8cmMpeIPxxYVezY
+
+###
+
+### Update a todo
+PUT http://localhost:5000/todos/4
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE3NDQ1NTc3Mjd9.GlnULGoJc784HY8pcI6fafZryU8m8cmMpeIPxxYVezY
+
+{
+  "title": "Updated Title",
+  "description": "Updated Description",
+  "completed": false
+}
+
+###
+
+### Delete a todo
+DELETE http://localhost:5000/todos/3
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE3NDQ1NTc3Mjd9.GlnULGoJc784HY8pcI6fafZryU8m8cmMpeIPxxYVezY
